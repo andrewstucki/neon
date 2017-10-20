@@ -31,7 +31,7 @@ export function setup(stream: string = 'stdout') {
     tmpobj = tmp.dirSync({ unsafeCleanup: true });
 
     this.cwd = tmpobj.name;
-    this.spawn = (args: string[]) => spawn(NODE, [NEON].concat(args), { shell: true, cwd: this.cwd, stream });
+    this.spawn = (args: string[]) => spawn(`"${NODE}"`, [`"${NEON}"`].concat(args), { shell: true, cwd: this.cwd, stream });
   });
 
   afterEach(function() {
